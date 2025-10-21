@@ -26,6 +26,7 @@ public class RacingCarController {
         racingCarView.printResultByRound(result);
 
         // TODO: 라운드 끝나고 최종 우승자 계산
-        racingCarView.printFinalResult("carName");
+        List<String> winners = racingGame.getWinners();
+        racingCarView.printFinalResult(winners);
     }
 }

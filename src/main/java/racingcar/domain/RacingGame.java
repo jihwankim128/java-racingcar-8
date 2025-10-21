@@ -22,4 +22,21 @@ public class RacingGame {
         }
         return new ArrayList<>(racingCars);
     }
+
+    public List<String> getWinners() {
+        List<RacingCar> racingResult = new ArrayList<>(racingCars);
+        int maxForwardCount = getWinnerForwardCount(racingResult);
+        return racingResult.stream()
+                .filter(racingCar -> racingCar.getForwardCount() == maxForwardCount)
+                .map(RacingCar::getCarName)
+                .toList();
+    }
+
+    private int getWinnerForwardCount(List<RacingCar> racingResult) {
+        int maxForwardCount = 0;
+        for (RacingCar racingCar : racingResult) {
+            maxForwardCount = Math.max(maxForwardCount, racingCar.getForwardCount());
+        }
+        return maxForwardCount;
+    }
 }
