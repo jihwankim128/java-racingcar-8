@@ -22,10 +22,11 @@ public class RacingCarController {
         int tryCount = racingCarView.readInputTryCount();
 
         racingCarView.printRacingStart();
-        List<RacingCar> result = racingGame.start(tryCount);
-        racingCarView.printResultByRound(result);
+        for (int i = 0; i < tryCount; i++) {
+            List<RacingCar> result = racingGame.start();
+            racingCarView.printResultByRound(result);
+        }
 
-        // TODO: 라운드 끝나고 최종 우승자 계산
         List<String> winners = racingGame.getWinners();
         racingCarView.printFinalResult(winners);
     }

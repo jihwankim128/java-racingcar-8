@@ -35,6 +35,6 @@ public class RacingCarView {
 
     public void printFinalResult(List<String> winners) {
         String finalWinners = String.join(", ", winners);
-        System.out.println("\n최종 우승자 : " + finalWinners);
+        System.out.println("최종 우승자 : " + finalWinners);
     }
 }

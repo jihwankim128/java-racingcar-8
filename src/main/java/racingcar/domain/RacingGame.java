@@ -14,11 +14,9 @@ public class RacingGame {
         }
     }
 
-    public List<RacingCar> start(int tryCount) {
-        for (int i = 0; i < tryCount; i++) {
-            for (RacingCar racingCar : racingCars) {
-                racingCar.move();
-            }
+    public List<RacingCar> start() {
+        for (RacingCar racingCar : racingCars) {
+            racingCar.move();
         }
         return new ArrayList<>(racingCars);
     }
