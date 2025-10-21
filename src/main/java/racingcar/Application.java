@@ -1,7 +1,13 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
+import racingcar.application.RacingCarController;
+import racingcar.ui.RacingCarView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        RacingCarView racingCarView = new RacingCarView();
+        RacingCarController racingCarController = new RacingCarController(racingCarView);
+        racingCarController.run();
     }
 }
