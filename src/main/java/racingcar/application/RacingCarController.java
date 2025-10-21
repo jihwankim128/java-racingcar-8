@@ -1,5 +1,7 @@
 package racingcar.application;
 
+import racingcar.domain.RacingCar;
+import racingcar.domain.RacingGame;
 import racingcar.ui.RacingCarView;
 
 public class RacingCarController {
@@ -13,7 +15,7 @@ public class RacingCarController {
     public void run() {
         racingCarView.printInputCarNamesPrompt();
         String carNames = racingCarView.readInputCarNames();
-        // TODO: 자동차 정보 생성
+        RacingGame racingGame = new RacingGame(carNames);
         racingCarView.printInputTryCountPrompt();
         int tryCount = racingCarView.readInputTryCount();
         // TODO: 레이싱 시작
