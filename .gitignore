@@ -33,3 +33,10 @@ out/
 
 ### Mac OS ###
 .DS_Store
+
+.husky
+checkstyle.sh
+package-lock.json
+package.json
+node_modules
+checkstyle
