@@ -1,6 +1,8 @@
 package racingcar.ui;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.List;
+import racingcar.domain.RacingCar;
 
 public class RacingCarView {
 
@@ -24,8 +26,10 @@ public class RacingCarView {
         System.out.println("\n실행 결과");
     }
 
-    public void printResultByRound(String carName, int forwardCount) {
-        System.out.println(carName + " : " + "-".repeat(forwardCount));
+    public void printResultByRound(List<RacingCar> result) {
+        for (RacingCar racingCar : result) {
+            System.out.println(racingCar.getCarName() + " : " + "-".repeat(racingCar.getForwardCount()));
+        }
         System.out.println();
     }
 

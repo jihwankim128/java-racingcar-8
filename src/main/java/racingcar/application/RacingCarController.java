@@ -1,5 +1,6 @@
 package racingcar.application;
 
+import java.util.List;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingGame;
 import racingcar.ui.RacingCarView;
@@ -16,12 +17,14 @@ public class RacingCarController {
         racingCarView.printInputCarNamesPrompt();
         String carNames = racingCarView.readInputCarNames();
         RacingGame racingGame = new RacingGame(carNames);
+
         racingCarView.printInputTryCountPrompt();
         int tryCount = racingCarView.readInputTryCount();
-        // TODO: 레이싱 시작
+
         racingCarView.printRacingStart();
-        // TODO: 라운드 별 경주 실행
-        racingCarView.printResultByRound("carName", 10);
+        List<RacingCar> result = racingGame.start(tryCount);
+        racingCarView.printResultByRound(result);
+
         // TODO: 라운드 끝나고 최종 우승자 계산
         racingCarView.printFinalResult("carName");
     }
