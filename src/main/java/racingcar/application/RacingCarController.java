@@ -16,15 +16,16 @@ public class RacingCarController {
     public void run() {
         racingCarView.printInputCarNamesPrompt();
         String carNames = racingCarView.readInputCarNames();
-        RacingGame racingGame = new RacingGame(carNames);
-
         racingCarView.printInputTryCountPrompt();
-        int tryCount = racingCarView.readInputTryCount();
+        int trialCount = racingCarView.readInputTryCount();
+
+        RacingGame racingGame = new RacingGame(carNames, trialCount);
+
 
         racingCarView.printRacingStart();
-        for (int i = 0; i < tryCount; i++) {
+        while (racingGame.canStart()) {
             List<RacingCar> result = racingGame.start();
-            racingCarView.printResultByRound(result);
+            racingCarView.printTrialResult(result);
         }
 
         List<String> winners = racingGame.getWinners();

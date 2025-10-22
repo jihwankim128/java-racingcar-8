@@ -6,18 +6,25 @@ import java.util.List;
 public class RacingGame {
 
     private final List<RacingCar> racingCars = new ArrayList<>();
+    private int trialCount;
 
-    public RacingGame(String carNames) {
+    public RacingGame(String carNames, int trialCount) {
         String[] tokens = carNames.split(",");
         for (String token : tokens) {
             racingCars.add(new RacingCar(token));
         }
+        this.trialCount = trialCount;
+    }
+
+    public boolean canStart() {
+        return trialCount > 0;
     }
 
     public List<RacingCar> start() {
         for (RacingCar racingCar : racingCars) {
             racingCar.move();
         }
+        trialCount--;
         return new ArrayList<>(racingCars);
     }
 

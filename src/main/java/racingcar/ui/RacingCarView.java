@@ -26,7 +26,7 @@ public class RacingCarView {
         System.out.println("\n실행 결과");
     }
 
-    public void printResultByRound(List<RacingCar> result) {
+    public void printTrialResult(List<RacingCar> result) {
         for (RacingCar racingCar : result) {
             System.out.println(racingCar.getCarName() + " : " + "-".repeat(racingCar.getForwardCount()));
         }
