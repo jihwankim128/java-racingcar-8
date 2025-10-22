@@ -17,4 +17,9 @@ public class ConsoleOutputListener implements RacingEventListener {
     public void onTrialFinished(List<RacingCar> racingCars) {
         racingCarView.printTrialResult(racingCars);
     }
+
+    @Override
+    public void onRacingStarted() {
+        racingCarView.printRacingStarted();
+    }
 }

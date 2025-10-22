@@ -22,7 +22,7 @@ public class RacingCarView {
         return Integer.parseInt(Console.readLine());
     }
 
-    public void printRacingStart() {
+    public void printRacingStarted() {
         System.out.println("\n실행 결과");
     }
 

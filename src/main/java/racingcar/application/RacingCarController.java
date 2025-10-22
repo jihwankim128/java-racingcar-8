@@ -22,9 +22,7 @@ public class RacingCarController {
         int trialCount = racingCarView.readInputTryCount();
 
         RacingGame racingGame = new RacingGame(carNames, trialCount, eventListener);
-
-        racingCarView.printRacingStart();
-        racingGame.start();
+        racingGame.play();
 
         List<String> winners = racingGame.getWinners();
         racingCarView.printFinalResult(winners);

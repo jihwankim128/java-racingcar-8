@@ -18,12 +18,13 @@ public class RacingGame {
         this.eventListener = eventListener;
     }
 
-    public boolean canStart() {
+    public boolean hasMoreTrials() {
         return trialCount > 0;
     }
 
-    public void start() {
-        while (canStart()) {
+    public void play() {
+        eventListener.onRacingStarted();
+        while (hasMoreTrials()) {
             racingCars.forEach(RacingCar::move);
             trialCount--;
             eventListener.onTrialFinished(racingCars);
