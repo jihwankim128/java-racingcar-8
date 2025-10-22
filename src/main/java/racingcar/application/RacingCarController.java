@@ -1,6 +1,5 @@
 package racingcar.application;
 
-import java.util.List;
 import racingcar.domain.RacingEventListener;
 import racingcar.domain.RacingGame;
 import racingcar.ui.RacingCarView;
@@ -23,8 +22,5 @@ public class RacingCarController {
 
         RacingGame racingGame = new RacingGame(carNames, trialCount, eventListener);
         racingGame.play();
-
-        List<String> winners = racingGame.getWinners();
-        racingCarView.printFinalResult(winners);
     }
 }

@@ -29,6 +29,8 @@ public class RacingGame {
             trialCount--;
             eventListener.onTrialFinished(racingCars);
         }
+        List<String> winners = getWinners();
+        eventListener.onRacingFinished(winners);
     }
 
     public List<String> getWinners() {

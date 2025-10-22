@@ -8,4 +8,6 @@ public interface RacingEventListener extends EventListener {
     void onTrialFinished(List<RacingCar> racingCars);
 
     void onRacingStarted();
+
+    void onRacingFinished(List<String> winners);
 }

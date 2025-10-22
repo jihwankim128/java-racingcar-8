@@ -22,4 +22,9 @@ public class ConsoleOutputListener implements RacingEventListener {
     public void onRacingStarted() {
         racingCarView.printRacingStarted();
     }
+
+    @Override
+    public void onRacingFinished(List<String> winners) {
+        racingCarView.printWinners(winners);
+    }
 }
