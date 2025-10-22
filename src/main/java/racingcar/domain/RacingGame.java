@@ -6,26 +6,28 @@ import java.util.List;
 public class RacingGame {
 
     private final List<RacingCar> racingCars = new ArrayList<>();
+    private final RacingEventListener eventListener;
     private int trialCount;
 
-    public RacingGame(String carNames, int trialCount) {
+    public RacingGame(String carNames, int trialCount, RacingEventListener eventListener) {
         String[] tokens = carNames.split(",");
         for (String token : tokens) {
             racingCars.add(new RacingCar(token));
         }
         this.trialCount = trialCount;
+        this.eventListener = eventListener;
     }
 
     public boolean canStart() {
         return trialCount > 0;
     }
 
-    public List<RacingCar> start() {
-        for (RacingCar racingCar : racingCars) {
-            racingCar.move();
+    public void start() {
+        while (canStart()) {
+            racingCars.forEach(RacingCar::move);
+            trialCount--;
+            eventListener.onTrialFinished(racingCars);
         }
-        trialCount--;
-        return new ArrayList<>(racingCars);
     }
 
     public List<String> getWinners() {

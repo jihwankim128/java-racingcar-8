@@ -1,16 +1,18 @@
 package racingcar.application;
 
 import java.util.List;
-import racingcar.domain.RacingCar;
+import racingcar.domain.RacingEventListener;
 import racingcar.domain.RacingGame;
 import racingcar.ui.RacingCarView;
 
 public class RacingCarController {
 
     private final RacingCarView racingCarView;
+    private final RacingEventListener eventListener;
 
-    public RacingCarController(RacingCarView racingCarView) {
+    public RacingCarController(RacingCarView racingCarView, RacingEventListener eventListener) {
         this.racingCarView = racingCarView;
+        this.eventListener = eventListener;
     }
 
     public void run() {
@@ -19,14 +21,10 @@ public class RacingCarController {
         racingCarView.printInputTryCountPrompt();
         int trialCount = racingCarView.readInputTryCount();
 
-        RacingGame racingGame = new RacingGame(carNames, trialCount);
-
+        RacingGame racingGame = new RacingGame(carNames, trialCount, eventListener);
 
         racingCarView.printRacingStart();
-        while (racingGame.canStart()) {
-            List<RacingCar> result = racingGame.start();
-            racingCarView.printTrialResult(result);
-        }
+        racingGame.start();
 
         List<String> winners = racingGame.getWinners();
         racingCarView.printFinalResult(winners);
