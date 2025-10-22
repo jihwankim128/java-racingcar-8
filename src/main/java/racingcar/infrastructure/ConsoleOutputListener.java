@@ -3,28 +3,28 @@ package racingcar.infrastructure;
 import java.util.List;
 import racingcar.domain.RacingCar;
 import racingcar.domain.RacingEventListener;
-import racingcar.ui.RacingCarView;
+import racingcar.ui.ConsoleOutputView;
 
 public class ConsoleOutputListener implements RacingEventListener {
 
-    private final RacingCarView racingCarView;
+    private final ConsoleOutputView consoleOutputView;
 
-    public ConsoleOutputListener(RacingCarView racingCarView) {
-        this.racingCarView = racingCarView;
+    public ConsoleOutputListener(ConsoleOutputView consoleOutputView) {
+        this.consoleOutputView = consoleOutputView;
     }
 
     @Override
     public void onTrialFinished(List<RacingCar> racingCars) {
-        racingCarView.printTrialResult(racingCars);
+        consoleOutputView.printTrialResult(racingCars);
     }
 
     @Override
     public void onRacingStarted() {
-        racingCarView.printRacingStarted();
+        consoleOutputView.printRacingStarted();
     }
 
     @Override
     public void onRacingFinished(List<String> winners) {
-        racingCarView.printWinners(winners);
+        consoleOutputView.printWinners(winners);
     }
 }

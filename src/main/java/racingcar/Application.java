@@ -3,13 +3,15 @@ package racingcar;
 import racingcar.application.RacingCarController;
 import racingcar.domain.RacingEventListener;
 import racingcar.infrastructure.ConsoleOutputListener;
-import racingcar.ui.RacingCarView;
+import racingcar.ui.ConsoleInputView;
+import racingcar.ui.ConsoleOutputView;
+import racingcar.ui.InputView;
 
 public class Application {
     public static void main(String[] args) {
-        RacingCarView racingCarView = new RacingCarView();
-        RacingEventListener eventListener = new ConsoleOutputListener(racingCarView);
-        RacingCarController racingCarController = new RacingCarController(racingCarView, eventListener);
+        InputView inputView = new ConsoleInputView();
+        RacingEventListener eventListener = new ConsoleOutputListener(new ConsoleOutputView());
+        RacingCarController racingCarController = new RacingCarController(inputView, eventListener);
         racingCarController.run();
     }
 }

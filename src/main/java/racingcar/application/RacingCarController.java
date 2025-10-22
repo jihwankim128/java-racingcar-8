@@ -2,23 +2,21 @@ package racingcar.application;
 
 import racingcar.domain.RacingEventListener;
 import racingcar.domain.RacingGame;
-import racingcar.ui.RacingCarView;
+import racingcar.ui.InputView;
 
 public class RacingCarController {
 
-    private final RacingCarView racingCarView;
+    private final InputView inputView;
     private final RacingEventListener eventListener;
 
-    public RacingCarController(RacingCarView racingCarView, RacingEventListener eventListener) {
-        this.racingCarView = racingCarView;
+    public RacingCarController(InputView inputView, RacingEventListener eventListener) {
+        this.inputView = inputView;
         this.eventListener = eventListener;
     }
 
     public void run() {
-        racingCarView.printInputCarNamesPrompt();
-        String carNames = racingCarView.readInputCarNames();
-        racingCarView.printInputTryCountPrompt();
-        int trialCount = racingCarView.readInputTryCount();
+        String carNames = inputView.readInputCarNames();
+        int trialCount = inputView.readInputTryCount();
 
         RacingGame racingGame = new RacingGame(carNames, trialCount, eventListener);
         racingGame.play();
