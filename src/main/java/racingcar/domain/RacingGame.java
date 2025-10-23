@@ -5,14 +5,14 @@ import java.util.List;
 
 public class RacingGame {
 
-    private final List<RacingCar> racingCars = new ArrayList<>();
+    private final List<Player> players = new ArrayList<>();
     private final RacingEventListener eventListener;
     private int trialCount;
 
     public RacingGame(String carNames, int trialCount, RacingEventListener eventListener) {
         String[] tokens = carNames.split(",");
         for (String token : tokens) {
-            racingCars.add(new RacingCar(token));
+            players.add(new Player(token));
         }
         this.trialCount = trialCount;
         this.eventListener = eventListener;
@@ -25,27 +25,27 @@ public class RacingGame {
     public void play() {
         eventListener.onRacingStarted();
         while (hasMoreTrials()) {
-            racingCars.forEach(RacingCar::move);
+            players.forEach(Player::move);
             trialCount--;
-            eventListener.onTrialFinished(racingCars);
+            eventListener.onTrialFinished(players);
         }
         List<String> winners = getWinners();
         eventListener.onRacingFinished(winners);
     }
 
     public List<String> getWinners() {
-        List<RacingCar> racingResult = new ArrayList<>(racingCars);
+        List<Player> racingResult = new ArrayList<>(players);
         int maxForwardCount = getWinnerForwardCount(racingResult);
         return racingResult.stream()
                 .filter(racingCar -> racingCar.getForwardCount() == maxForwardCount)
-                .map(RacingCar::getCarName)
+                .map(Player::getCarName)
                 .toList();
     }
 
-    private int getWinnerForwardCount(List<RacingCar> racingResult) {
+    private int getWinnerForwardCount(List<Player> racingResult) {
         int maxForwardCount = 0;
-        for (RacingCar racingCar : racingResult) {
-            maxForwardCount = Math.max(maxForwardCount, racingCar.getForwardCount());
+        for (Player player : racingResult) {
+            maxForwardCount = Math.max(maxForwardCount, player.getForwardCount());
         }
         return maxForwardCount;
     }

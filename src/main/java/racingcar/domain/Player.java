@@ -2,12 +2,12 @@ package racingcar.domain;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
-public class RacingCar {
+public class Player {
 
     private final String carName;
     private int forwardCount;
 
-    public RacingCar(String carName) {
+    public Player(String carName) {
         if (carName == null || carName.isEmpty()) {
             throw new IllegalArgumentException("자동차 이름은 필수입니다.");
         }

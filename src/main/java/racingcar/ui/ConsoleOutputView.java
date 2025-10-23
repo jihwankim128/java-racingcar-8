@@ -1,7 +1,7 @@
 package racingcar.ui;
 
 import java.util.List;
-import racingcar.domain.RacingCar;
+import racingcar.domain.Player;
 
 public class ConsoleOutputView implements OutputView {
     @Override
@@ -9,9 +9,9 @@ public class ConsoleOutputView implements OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public void printTrialResult(List<RacingCar> result) {
-        for (RacingCar racingCar : result) {
-            System.out.println(racingCar.getCarName() + " : " + "-".repeat(racingCar.getForwardCount()));
+    public void printTrialResult(List<Player> result) {
+        for (Player player : result) {
+            System.out.println(player.getCarName() + " : " + "-".repeat(player.getForwardCount()));
         }
         System.out.println();
     }

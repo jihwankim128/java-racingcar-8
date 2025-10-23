@@ -1,7 +1,7 @@
 package racingcar.infrastructure;
 
 import java.util.List;
-import racingcar.domain.RacingCar;
+import racingcar.domain.Player;
 import racingcar.domain.RacingEventListener;
 import racingcar.ui.ConsoleOutputView;
 
@@ -14,8 +14,8 @@ public class ConsoleOutputListener implements RacingEventListener {
     }
 
     @Override
-    public void onTrialFinished(List<RacingCar> racingCars) {
-        consoleOutputView.printTrialResult(racingCars);
+    public void onTrialFinished(List<Player> players) {
+        consoleOutputView.printTrialResult(players);
     }
 
     @Override

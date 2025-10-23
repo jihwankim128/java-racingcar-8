@@ -5,7 +5,7 @@ import java.util.List;
 
 public interface RacingEventListener extends EventListener {
 
-    void onTrialFinished(List<RacingCar> racingCars);
+    void onTrialFinished(List<Player> players);
 
     void onRacingStarted();
 
