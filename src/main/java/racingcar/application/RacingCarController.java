@@ -25,11 +25,10 @@ public class RacingCarController {
         Trial trial = new Trial(trialCount);
 
         outputView.printRacingStarted();
-        while (trial.canTry()) {
-            trial.decrement();
+        trial.tryAction(() -> {
             List<Player> playResult = players.play();
             outputView.printTrialResult(playResult);
-        }
+        });
 
         List<String> winners = players.getWinners();
         outputView.printWinners(winners);

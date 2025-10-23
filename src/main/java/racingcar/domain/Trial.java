@@ -1,8 +1,10 @@
 package racingcar.domain;
 
+import java.util.stream.IntStream;
+
 public class Trial {
 
-    private int count;
+    private final int count;
 
     public Trial(int count) {
         if (count <= 0) {
@@ -11,14 +13,8 @@ public class Trial {
         this.count = count;
     }
 
-    public void decrement() {
-        if (!canTry()) {
-            throw new IllegalArgumentException("더 이상 시도할 수 없습니다.");
-        }
-        count--;
-    }
-
-    public boolean canTry() {
-        return count > 0;
+    public void tryAction(Runnable action) {
+        IntStream.range(0, count)
+                .forEach(trialCount -> action.run());
     }
 }
