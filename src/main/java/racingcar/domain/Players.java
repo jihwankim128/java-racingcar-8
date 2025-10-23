@@ -1,0 +1,32 @@
+package racingcar.domain;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Players {
+
+    private final List<Player> players = new ArrayList<>();
+
+    public void add(Player player) {
+        players.add(player);
+    }
+
+    public List<Player> play() {
+        players.forEach(Player::move);
+        return new ArrayList<>(players);
+    }
+
+    public int getMaxForwardCount() {
+        return players.stream()
+                .mapToInt(Player::getForwardCount)
+                .max()
+                .orElse(0);
+    }
+
+    public List<String> getWinners(int maxForwardCount) {
+        return players.stream()
+                .filter(player -> player.getForwardCount() == maxForwardCount)
+                .map(Player::getCarName)
+                .toList();
+    }
+}

@@ -1,11 +1,10 @@
 package racingcar.domain;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RacingGame {
 
-    private final List<Player> players = new ArrayList<>();
+    private final Players players = new Players();
     private final RacingEventListener eventListener;
     private int trialCount;
 
@@ -25,28 +24,13 @@ public class RacingGame {
     public void play() {
         eventListener.onRacingStarted();
         while (hasMoreTrials()) {
-            players.forEach(Player::move);
             trialCount--;
-            eventListener.onTrialFinished(players);
+            List<Player> playResult = players.play();
+            eventListener.onTrialFinished(playResult);
         }
-        List<String> winners = getWinners();
+
+        int maxForwardCount = players.getMaxForwardCount();
+        List<String> winners = players.getWinners(maxForwardCount);
         eventListener.onRacingFinished(winners);
-    }
-
-    public List<String> getWinners() {
-        List<Player> racingResult = new ArrayList<>(players);
-        int maxForwardCount = getWinnerForwardCount(racingResult);
-        return racingResult.stream()
-                .filter(racingCar -> racingCar.getForwardCount() == maxForwardCount)
-                .map(Player::getCarName)
-                .toList();
-    }
-
-    private int getWinnerForwardCount(List<Player> racingResult) {
-        int maxForwardCount = 0;
-        for (Player player : racingResult) {
-            maxForwardCount = Math.max(maxForwardCount, player.getForwardCount());
-        }
-        return maxForwardCount;
     }
 }
