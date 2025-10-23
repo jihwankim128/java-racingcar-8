@@ -16,17 +16,18 @@ public class Players {
         return new ArrayList<>(players);
     }
 
-    public int getMaxForwardCount() {
-        return players.stream()
-                .mapToInt(Player::getForwardCount)
-                .max()
-                .orElse(0);
-    }
-
-    public List<String> getWinners(int maxForwardCount) {
+    public List<String> getWinners() {
+        int maxForwardCount = getMaxForwardCount();
         return players.stream()
                 .filter(player -> player.getForwardCount() == maxForwardCount)
                 .map(Player::getCarName)
                 .toList();
+    }
+
+    private int getMaxForwardCount() {
+        return players.stream()
+                .mapToInt(Player::getForwardCount)
+                .max()
+                .orElse(0);
     }
 }

@@ -25,8 +25,7 @@ public class RacingGame {
             eventListener.onTrialFinished(playResult);
         }
 
-        int maxForwardCount = players.getMaxForwardCount();
-        List<String> winners = players.getWinners(maxForwardCount);
+        List<String> winners = players.getWinners();
         eventListener.onRacingFinished(winners);
     }
 }
