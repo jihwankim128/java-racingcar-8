@@ -1,5 +1,6 @@
 package racingcar.application;
 
+import java.util.List;
 import racingcar.domain.RacingEventListener;
 import racingcar.domain.RacingGame;
 import racingcar.ui.InputView;
@@ -15,7 +16,7 @@ public class RacingCarController {
     }
 
     public void run() {
-        String carNames = inputView.readInputCarNames();
+        List<String> carNames = inputView.readInputCarNames();
         int trialCount = inputView.readInputTryCount();
 
         RacingGame racingGame = new RacingGame(carNames, trialCount, eventListener);

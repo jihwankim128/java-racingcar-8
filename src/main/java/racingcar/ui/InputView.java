@@ -1,7 +1,9 @@
 package racingcar.ui;
 
+import java.util.List;
+
 public interface InputView {
-    String readInputCarNames();
+    List<String> readInputCarNames();
 
     int readInputTryCount();
 }

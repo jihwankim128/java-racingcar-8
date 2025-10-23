@@ -9,10 +9,10 @@ public class RacingGame {
     private final RacingEventListener eventListener;
     private int trialCount;
 
-    public RacingGame(String carNames, int trialCount, RacingEventListener eventListener) {
-        String[] tokens = carNames.split(",");
-        for (String token : tokens) {
-            players.add(new Player(token));
+    public RacingGame(List<String> carNames, int trialCount, RacingEventListener eventListener) {
+        for (String carName : carNames) {
+            Player player = new Player(carName);
+            players.add(player);
         }
         this.trialCount = trialCount;
         this.eventListener = eventListener;
