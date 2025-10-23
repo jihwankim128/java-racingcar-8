@@ -5,5 +5,5 @@ import java.util.List;
 public interface InputView {
     List<String> readInputCarNames();
 
-    int readInputTryCount();
+    int readTrialCount();
 }

@@ -1,24 +1,24 @@
 package racingcar.domain;
 
-public class TrialCount {
+public class Trial {
 
-    private int trialCount;
+    private int count;
 
-    public TrialCount(int trialCount) {
-        if (trialCount <= 0) {
+    public Trial(int count) {
+        if (count <= 0) {
             throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
         }
-        this.trialCount = trialCount;
+        this.count = count;
     }
 
     public void decrement() {
         if (!canTry()) {
             throw new IllegalArgumentException("더 이상 시도할 수 없습니다.");
         }
-        trialCount--;
+        count--;
     }
 
     public boolean canTry() {
-        return trialCount > 0;
+        return count > 0;
     }
 }

@@ -3,7 +3,7 @@ package racingcar.application;
 import java.util.List;
 import racingcar.domain.Player;
 import racingcar.domain.Players;
-import racingcar.domain.TrialCount;
+import racingcar.domain.Trial;
 import racingcar.ui.InputView;
 import racingcar.ui.OutputView;
 
@@ -21,8 +21,8 @@ public class RacingCarController {
         List<String> carNames = inputView.readInputCarNames();
         Players players = new Players(carNames);
 
-        int trialCount = inputView.readInputTryCount();
-        TrialCount trial = new TrialCount(trialCount);
+        int trialCount = inputView.readTrialCount();
+        Trial trial = new Trial(trialCount);
 
         outputView.printRacingStarted();
         while (trial.canTry()) {
