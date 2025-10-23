@@ -1,25 +1,37 @@
 package racingcar.application;
 
 import java.util.List;
-import racingcar.domain.RacingEventListener;
-import racingcar.domain.RacingGame;
+import racingcar.domain.Player;
+import racingcar.domain.Players;
+import racingcar.domain.TrialCount;
 import racingcar.ui.InputView;
+import racingcar.ui.OutputView;
 
 public class RacingCarController {
 
     private final InputView inputView;
-    private final RacingEventListener eventListener;
+    private final OutputView outputView;
 
-    public RacingCarController(InputView inputView, RacingEventListener eventListener) {
+    public RacingCarController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
-        this.eventListener = eventListener;
+        this.outputView = outputView;
     }
 
     public void run() {
         List<String> carNames = inputView.readInputCarNames();
-        int trialCount = inputView.readInputTryCount();
+        Players players = new Players(carNames);
 
-        RacingGame racingGame = new RacingGame(carNames, trialCount, eventListener);
-        racingGame.play();
+        int trialCount = inputView.readInputTryCount();
+        TrialCount trial = new TrialCount(trialCount);
+
+        outputView.printRacingStarted();
+        while (trial.canTry()) {
+            trial.decrement();
+            List<Player> playResult = players.play();
+            outputView.printTrialResult(playResult);
+        }
+
+        List<String> winners = players.getWinners();
+        outputView.printWinners(winners);
     }
 }

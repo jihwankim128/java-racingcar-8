@@ -7,8 +7,11 @@ public class Players {
 
     private final List<Player> players = new ArrayList<>();
 
-    public void add(Player player) {
-        players.add(player);
+    public Players(List<String> carNames) {
+        for (String carName : carNames) {
+            Player player = new Player(carName);
+            players.add(player);
+        }
     }
 
     public List<Player> play() {
