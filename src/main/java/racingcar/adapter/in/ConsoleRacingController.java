@@ -4,7 +4,7 @@ import java.util.List;
 import racingcar.application.RacingCarUseCase;
 import racingcar.application.RacingCommand;
 import racingcar.application.RacingResult;
-import racingcar.domain.vo.PlayResult;
+import racingcar.domain.vo.RaceResult;
 
 public class ConsoleRacingController {
 
@@ -29,7 +29,7 @@ public class ConsoleRacingController {
     }
 
     private void printRacingResult(RacingResult racingResult) {
-        List<List<PlayResult>> history = racingResult.history();
+        List<List<RaceResult>> history = racingResult.history();
 
         outputView.printRacingStarted();
         history.forEach(outputView::printTrialResult);

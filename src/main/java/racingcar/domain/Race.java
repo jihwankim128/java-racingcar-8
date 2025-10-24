@@ -2,13 +2,13 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import racingcar.domain.vo.PlayResult;
+import racingcar.domain.vo.RaceResult;
 
-public class Players {
+public class Race {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public Players(List<String> carNames) {
+    public Race(List<String> carNames) {
         for (String carName : carNames) {
             Car car = new Car(carName);
             cars.add(car);
@@ -21,9 +21,9 @@ public class Players {
                 .forEach(Car::moveForward);
     }
 
-    public List<PlayResult> getRaceResult() {
+    public List<RaceResult> getRaceResult() {
         return cars.stream()
-                .map(PlayResult::from)
+                .map(RaceResult::from)
                 .toList();
     }
 

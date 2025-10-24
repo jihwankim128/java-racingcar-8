@@ -1,30 +1,30 @@
 package racingcar.domain;
 
-public class Player {
+public class Car {
 
-    private final String carName;
-    private int forwardCount;
+    private final String name;
+    private int position;
 
-    public Player(String carName) {
-        if (carName == null || carName.isBlank()) {
+    public Car(String name) {
+        if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 필수입니다.");
         }
-        if (carName.length() > 5) {
+        if (name.length() > 5) {
             throw new IllegalArgumentException("자동차 이름은 최대 5자입니다.");
         }
-        this.carName = carName;
-        this.forwardCount = 0;
+        this.name = name;
+        this.position = 0;
     }
 
     public void moveForward() {
-        forwardCount++;
+        position++;
     }
 
-    public String getCarName() {
-        return carName;
+    public String getName() {
+        return name;
     }
 
-    public int getForwardCount() {
-        return forwardCount;
+    public int getPosition() {
+        return position;
     }
 }

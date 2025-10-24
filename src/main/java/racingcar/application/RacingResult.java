@@ -1,7 +1,7 @@
 package racingcar.application;
 
 import java.util.List;
-import racingcar.domain.vo.PlayResult;
+import racingcar.domain.vo.RaceResult;
 
-public record RacingResult(List<List<PlayResult>> history, List<String> winners) {
+public record RacingResult(List<List<RaceResult>> history, List<String> winners) {
 }

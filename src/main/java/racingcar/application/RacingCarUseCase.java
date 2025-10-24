@@ -2,9 +2,9 @@ package racingcar.application;
 
 import java.util.List;
 import racingcar.domain.MoveCondition;
-import racingcar.domain.Players;
+import racingcar.domain.Race;
 import racingcar.domain.Trial;
-import racingcar.domain.vo.PlayResult;
+import racingcar.domain.vo.RaceResult;
 
 public class RacingCarUseCase {
 
@@ -15,15 +15,15 @@ public class RacingCarUseCase {
     }
 
     public RacingResult startRacing(RacingCommand command) {
-        Players players = new Players(command.carNames());
+        Race race = new Race(command.carNames());
         Trial trial = new Trial(command.trialCount());
 
-        List<List<PlayResult>> history = trial.tryAction(() -> {
-            players.race(moveCondition);
-            return players.getRaceResult();
+        List<List<RaceResult>> history = trial.tryAction(() -> {
+            race.race(moveCondition);
+            return race.getRaceResult();
         });
 
-        List<String> winners = players.getWinners();
+        List<String> winners = race.getWinners();
         return new RacingResult(history, winners);
     }
 }

@@ -2,9 +2,9 @@ package racingcar.domain.vo;
 
 import racingcar.domain.Car;
 
-public record PlayResult(String carName, int forwardCount) {
+public record RaceResult(String carName, int position) {
 
-    public static PlayResult from(Car car) {
-        return new PlayResult(car.getName(), car.getPosition());
+    public static RaceResult from(Car car) {
+        return new RaceResult(car.getName(), car.getPosition());
     }
 }

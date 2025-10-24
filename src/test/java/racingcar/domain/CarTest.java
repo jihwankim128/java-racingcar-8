@@ -8,14 +8,14 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-class PlayerTest {
+class CarTest {
 
     @ParameterizedTest
     @ValueSource(strings = " ")
     @NullAndEmptySource
     void 잘못된_자동차_이름으로_선수_등록은_할_수_없다(String invalidCarName) {
         // when & then
-        assertThatThrownBy(() -> new Player(invalidCarName))
+        assertThatThrownBy(() -> new Car(invalidCarName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -25,7 +25,7 @@ class PlayerTest {
         String invalidCarName = "1".repeat(6);
 
         // when & then
-        assertThatThrownBy(() -> new Player(invalidCarName))
+        assertThatThrownBy(() -> new Car(invalidCarName))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
@@ -35,22 +35,22 @@ class PlayerTest {
         String carName = "1".repeat(5);
 
         // when
-        Player player = new Player(carName);
+        Car car = new Car(carName);
 
         // then
-        assertThat(player.getForwardCount()).isEqualTo(0);
+        assertThat(car.getPosition()).isEqualTo(0);
     }
 
     @Test
     void 선수가_주어질_때_전진하면_전진_횟수가_증가한다() {
         // given
-        Player player = new Player("이프");
-        int before = player.getForwardCount();
+        Car car = new Car("이프");
+        int before = car.getPosition();
 
         // when
-        player.moveForward();
+        car.moveForward();
 
         // then
-        assertThat(player.getForwardCount()).isEqualTo(before + 1);
+        assertThat(car.getPosition()).isEqualTo(before + 1);
     }
 }

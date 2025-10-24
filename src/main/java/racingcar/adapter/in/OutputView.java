@@ -1,7 +1,7 @@
 package racingcar.adapter.in;
 
 import java.util.List;
-import racingcar.domain.vo.PlayResult;
+import racingcar.domain.vo.RaceResult;
 
 public class OutputView {
 
@@ -9,9 +9,9 @@ public class OutputView {
         System.out.println("\n실행 결과");
     }
 
-    public void printTrialResult(List<PlayResult> result) {
-        for (PlayResult player : result) {
-            System.out.println(player.carName() + " : " + "-".repeat(player.forwardCount()));
+    public void printTrialResult(List<RaceResult> raceResults) {
+        for (RaceResult raceResult : raceResults) {
+            System.out.println(raceResult.carName() + " : " + "-".repeat(raceResult.position()));
         }
         System.out.println();
     }
