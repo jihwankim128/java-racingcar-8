@@ -1,7 +1,7 @@
 package racingcar.application;
 
 import java.util.List;
-import racingcar.domain.Player;
+import racingcar.domain.PlayResult;
 import racingcar.domain.Players;
 import racingcar.domain.Trial;
 import racingcar.ui.InputView;
@@ -26,7 +26,7 @@ public class RacingCarController {
 
         outputView.printRacingStarted();
         trial.tryAction(() -> {
-            List<Player> playResult = players.play();
+            List<PlayResult> playResult = players.play();
             outputView.printTrialResult(playResult);
         });
 

@@ -15,11 +15,14 @@ public class Players {
         }
     }
 
-    public List<Player> play() {
+    public List<PlayResult> play() {
         players.stream()
                 .filter(player -> Randoms.pickNumberInRange(0, 9) >= 4)
                 .forEach(Player::moveForward);
-        return new ArrayList<>(players);
+
+        return players.stream()
+                .map(PlayResult::from)
+                .toList();
     }
 
     public List<String> getWinners() {

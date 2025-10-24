@@ -1,12 +1,12 @@
 package racingcar.ui;
 
 import java.util.List;
-import racingcar.domain.Player;
+import racingcar.domain.PlayResult;
 
 public interface OutputView {
     void printRacingStarted();
 
-    void printTrialResult(List<Player> result);
+    void printTrialResult(List<PlayResult> result);
 
     void printWinners(List<String> winners);
 }
