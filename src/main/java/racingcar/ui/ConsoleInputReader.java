@@ -3,8 +3,9 @@ package racingcar.ui;
 import static camp.nextstep.edu.missionutils.Console.readLine;
 
 import java.util.List;
+import racingcar.application.InputReader;
 
-public class ConsoleInputView implements InputView {
+public class ConsoleInputReader implements InputReader {
 
     @Override
     public List<String> readInputCarNames() {

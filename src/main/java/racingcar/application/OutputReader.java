@@ -1,9 +1,8 @@
-package racingcar.ui;
+package racingcar.application;
 
 import java.util.List;
-import racingcar.application.PlayResult;
 
-public interface OutputView {
+public interface OutputReader {
     void printRacingStarted();
 
     void printTrialResult(List<PlayResult> result);

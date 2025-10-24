@@ -5,36 +5,34 @@ import racingcar.domain.MoveCondition;
 import racingcar.domain.Player;
 import racingcar.domain.Players;
 import racingcar.domain.Trial;
-import racingcar.ui.InputView;
-import racingcar.ui.OutputView;
 
 public class RacingCarController {
 
-    private final InputView inputView;
-    private final OutputView outputView;
+    private final InputReader inputReader;
+    private final OutputReader outputReader;
     private final MoveCondition moveCondition;
 
-    public RacingCarController(InputView inputView, OutputView outputView, MoveCondition moveCondition) {
-        this.inputView = inputView;
-        this.outputView = outputView;
+    public RacingCarController(InputReader inputReader, OutputReader outputReader, MoveCondition moveCondition) {
+        this.inputReader = inputReader;
+        this.outputReader = outputReader;
         this.moveCondition = moveCondition;
     }
 
     public void run() {
-        List<String> carNames = inputView.readInputCarNames();
+        List<String> carNames = inputReader.readInputCarNames();
         Players players = new Players(carNames);
 
-        int trialCount = inputView.readTrialCount();
+        int trialCount = inputReader.readTrialCount();
         Trial trial = new Trial(trialCount);
 
-        outputView.printRacingStarted();
+        outputReader.printRacingStarted();
         trial.tryAction(() -> {
             List<Player> playResult = players.play(moveCondition);
             List<PlayResult> result = playResult.stream().map(PlayResult::from).toList();
-            outputView.printTrialResult(result);
+            outputReader.printTrialResult(result);
         });
 
         List<String> winners = players.getWinners();
-        outputView.printWinners(winners);
+        outputReader.printWinners(winners);
     }
 }
