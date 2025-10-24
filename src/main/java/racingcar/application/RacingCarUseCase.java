@@ -18,12 +18,16 @@ public class RacingCarUseCase {
         Race race = new Race(command.carNames());
         Trial trial = new Trial(command.trialCount());
 
-        List<List<RaceResult>> history = trial.tryAction(() -> {
+        List<List<RaceResult>> history = simulateRacing(race, trial);
+        List<String> winners = race.getWinners();
+
+        return new RacingResult(history, winners);
+    }
+
+    private List<List<RaceResult>> simulateRacing(Race race, Trial trial) {
+        return trial.tryAction(() -> {
             race.play(moveCondition);
             return race.getRaceResult();
         });
-
-        List<String> winners = race.getWinners();
-        return new RacingResult(history, winners);
     }
 }

@@ -19,13 +19,15 @@ public class ConsoleRacingController {
     }
 
     public void run() {
+        RacingCommand command = createCommand();
+        RacingResult racingResult = racingCarUseCase.startRacing(command);
+        printRacingResult(racingResult);
+    }
+
+    private RacingCommand createCommand() {
         List<String> carNames = inputView.readInputCarNames();
         int trialCount = inputView.readTrialCount();
-
-        RacingCommand command = new RacingCommand(carNames, trialCount);
-        RacingResult racingResult = racingCarUseCase.startRacing(command);
-
-        printRacingResult(racingResult);
+        return new RacingCommand(carNames, trialCount);
     }
 
     private void printRacingResult(RacingResult racingResult) {
