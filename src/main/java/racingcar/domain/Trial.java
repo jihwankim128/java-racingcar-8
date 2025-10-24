@@ -15,11 +15,6 @@ public class Trial {
         this.count = count;
     }
 
-    public void tryAction(Runnable action) {
-        IntStream.range(0, count)
-                .forEach(trialCount -> action.run());
-    }
-
     public <T> List<T> tryAction(Supplier<T> action) {
         return IntStream.range(0, count)
                 .mapToObj(i -> action.get())
