@@ -1,4 +1,4 @@
-package racingcar.application;
+package racingcar.domain.vo;
 
 import racingcar.domain.Player;
 

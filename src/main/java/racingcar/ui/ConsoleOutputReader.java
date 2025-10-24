@@ -2,7 +2,7 @@ package racingcar.ui;
 
 import java.util.List;
 import racingcar.application.OutputReader;
-import racingcar.application.PlayResult;
+import racingcar.domain.vo.PlayResult;
 
 public class ConsoleOutputReader implements OutputReader {
     @Override

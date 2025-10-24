@@ -5,6 +5,7 @@ import racingcar.domain.MoveCondition;
 import racingcar.domain.Player;
 import racingcar.domain.Players;
 import racingcar.domain.Trial;
+import racingcar.domain.vo.PlayResult;
 
 public class RacingCarController {
 

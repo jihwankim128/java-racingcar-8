@@ -2,6 +2,7 @@ package racingcar.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import racingcar.domain.vo.PlayResult;
 
 public class Players {
 
@@ -23,6 +24,18 @@ public class Players {
                 .filter(player -> moveCondition.canMove())
                 .forEach(Player::moveForward);
         return getPlayers();
+    }
+
+    public void race(MoveCondition moveCondition) {
+        players.stream()
+                .filter(player -> moveCondition.canMove())
+                .forEach(Player::moveForward);
+    }
+
+    public List<PlayResult> getRaceResult() {
+        return players.stream()
+                .map(PlayResult::from)
+                .toList();
     }
 
     public List<String> getWinners() {
