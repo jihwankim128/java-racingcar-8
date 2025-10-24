@@ -2,7 +2,7 @@ package racingcar.application;
 
 import java.util.List;
 import racingcar.domain.MoveCondition;
-import racingcar.domain.PlayResult;
+import racingcar.domain.Player;
 import racingcar.domain.Players;
 import racingcar.domain.Trial;
 import racingcar.ui.InputView;
@@ -29,8 +29,9 @@ public class RacingCarController {
 
         outputView.printRacingStarted();
         trial.tryAction(() -> {
-            List<PlayResult> playResult = players.play(moveCondition);
-            outputView.printTrialResult(playResult);
+            List<Player> playResult = players.play(moveCondition);
+            List<PlayResult> result = playResult.stream().map(PlayResult::from).toList();
+            outputView.printTrialResult(result);
         });
 
         List<String> winners = players.getWinners();

@@ -1,7 +1,7 @@
 package racingcar.ui;
 
 import java.util.List;
-import racingcar.domain.PlayResult;
+import racingcar.application.PlayResult;
 
 public class ConsoleOutputView implements OutputView {
     @Override

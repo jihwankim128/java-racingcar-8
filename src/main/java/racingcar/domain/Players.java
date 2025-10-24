@@ -14,14 +14,15 @@ public class Players {
         }
     }
 
-    public List<PlayResult> play(MoveCondition moveCondition) {
+    public List<Player> getPlayers() {
+        return new ArrayList<>(players);
+    }
+
+    public List<Player> play(MoveCondition moveCondition) {
         players.stream()
                 .filter(player -> moveCondition.canMove())
                 .forEach(Player::moveForward);
-
-        return players.stream()
-                .map(PlayResult::from)
-                .toList();
+        return getPlayers();
     }
 
     public List<String> getWinners() {

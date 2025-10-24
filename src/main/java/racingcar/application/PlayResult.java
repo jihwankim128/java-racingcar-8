@@ -1,4 +1,6 @@
-package racingcar.domain;
+package racingcar.application;
+
+import racingcar.domain.Player;
 
 public record PlayResult(String carName, int forwardCount) {
 
