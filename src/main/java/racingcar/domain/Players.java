@@ -1,5 +1,6 @@
 package racingcar.domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,9 @@ public class Players {
     }
 
     public List<Player> play() {
-        players.forEach(Player::move);
+        players.stream()
+                .filter(player -> Randoms.pickNumberInRange(0, 9) >= 4)
+                .forEach(Player::moveForward);
         return new ArrayList<>(players);
     }
 

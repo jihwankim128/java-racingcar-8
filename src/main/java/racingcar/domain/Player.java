@@ -1,14 +1,12 @@
 package racingcar.domain;
 
-import camp.nextstep.edu.missionutils.Randoms;
-
 public class Player {
 
     private final String carName;
     private int forwardCount;
 
     public Player(String carName) {
-        if (carName == null || carName.isEmpty()) {
+        if (carName == null || carName.isBlank()) {
             throw new IllegalArgumentException("자동차 이름은 필수입니다.");
         }
         if (carName.length() > 5) {
@@ -18,10 +16,8 @@ public class Player {
         this.forwardCount = 0;
     }
 
-    public void move() {
-        if (Randoms.pickNumberInRange(0, 9) >= 4) {
-            forwardCount++;
-        }
+    public void moveForward() {
+        forwardCount++;
     }
 
     public String getCarName() {
