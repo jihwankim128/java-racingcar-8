@@ -9,13 +9,20 @@ public class Race {
     private final List<Car> cars = new ArrayList<>();
 
     public Race(List<String> carNames) {
-        for (String carName : carNames) {
+        validateNotEmpty(carNames);
+        carNames.forEach(carName -> {
             Car car = new Car(carName);
             cars.add(car);
+        });
+    }
+
+    private static void validateNotEmpty(List<String> carNames) {
+        if (carNames == null || carNames.isEmpty()) {
+            throw new IllegalArgumentException("레이싱 참여자는 필수 정보입니다.");
         }
     }
 
-    public void race(MoveCondition moveCondition) {
+    public void play(MoveCondition moveCondition) {
         cars.stream()
                 .filter(car -> moveCondition.canMove())
                 .forEach(Car::moveForward);

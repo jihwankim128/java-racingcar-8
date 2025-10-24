@@ -19,7 +19,7 @@ public class RacingCarUseCase {
         Trial trial = new Trial(command.trialCount());
 
         List<List<RaceResult>> history = trial.tryAction(() -> {
-            race.race(moveCondition);
+            race.play(moveCondition);
             return race.getRaceResult();
         });
 
