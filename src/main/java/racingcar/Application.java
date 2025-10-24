@@ -3,9 +3,9 @@ package racingcar;
 import racingcar.adapter.in.ConsoleRacingController;
 import racingcar.adapter.in.InputView;
 import racingcar.adapter.in.OutputView;
+import racingcar.adapter.out.RandomMoveCondition;
 import racingcar.application.RacingCarUseCase;
 import racingcar.domain.MoveCondition;
-import racingcar.domain.RandomMoveCondition;
 
 public class Application {
     public static void main(String[] args) {
