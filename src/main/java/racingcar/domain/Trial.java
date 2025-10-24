@@ -6,13 +6,19 @@ import java.util.stream.IntStream;
 
 public class Trial {
 
+    private static final int MIN_COUNT = 1;
     private final int count;
 
     public Trial(int count) {
-        if (count <= 0) {
-            throw new IllegalArgumentException("시도 횟수는 0보다 커야 합니다.");
-        }
+        validateCount(count);
         this.count = count;
+    }
+
+    private void validateCount(int count) {
+        if (count < MIN_COUNT) {
+            final String errorMessage = "시도 횟수는 %d보다 작을 수 없습니다.";
+            throw new IllegalArgumentException(errorMessage.formatted(count));
+        }
     }
 
     public <T> List<T> tryAction(Supplier<T> action) {
