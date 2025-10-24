@@ -1,6 +1,7 @@
 package racingcar.application;
 
 import java.util.List;
+import racingcar.domain.MoveCondition;
 import racingcar.domain.PlayResult;
 import racingcar.domain.Players;
 import racingcar.domain.Trial;
@@ -11,10 +12,12 @@ public class RacingCarController {
 
     private final InputView inputView;
     private final OutputView outputView;
+    private final MoveCondition moveCondition;
 
-    public RacingCarController(InputView inputView, OutputView outputView) {
+    public RacingCarController(InputView inputView, OutputView outputView, MoveCondition moveCondition) {
         this.inputView = inputView;
         this.outputView = outputView;
+        this.moveCondition = moveCondition;
     }
 
     public void run() {
@@ -26,7 +29,7 @@ public class RacingCarController {
 
         outputView.printRacingStarted();
         trial.tryAction(() -> {
-            List<PlayResult> playResult = players.play();
+            List<PlayResult> playResult = players.play(moveCondition);
             outputView.printTrialResult(playResult);
         });
 

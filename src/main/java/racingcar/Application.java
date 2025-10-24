@@ -1,6 +1,8 @@
 package racingcar;
 
 import racingcar.application.RacingCarController;
+import racingcar.domain.MoveCondition;
+import racingcar.domain.RandomMoveCondition;
 import racingcar.ui.ConsoleInputView;
 import racingcar.ui.ConsoleOutputView;
 import racingcar.ui.InputView;
@@ -10,7 +12,9 @@ public class Application {
     public static void main(String[] args) {
         InputView inputView = new ConsoleInputView();
         OutputView outputView = new ConsoleOutputView();
-        RacingCarController racingCarController = new RacingCarController(inputView, outputView);
+        MoveCondition moveCondition = new RandomMoveCondition();
+
+        RacingCarController racingCarController = new RacingCarController(inputView, outputView, moveCondition);
         racingCarController.run();
     }
 }
