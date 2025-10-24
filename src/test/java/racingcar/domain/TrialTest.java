@@ -3,6 +3,7 @@ package racingcar.domain;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,9 +27,9 @@ class TrialTest {
         AtomicInteger counter = new AtomicInteger();
 
         // when
-        trial.tryAction(counter::incrementAndGet);
+        List<Integer> result = trial.tryAction(counter::incrementAndGet);
 
         // then
-        assertThat(counter.get()).isEqualTo(trialCount);
+        assertThat(result).contains(1, 2, 3);
     }
 }
