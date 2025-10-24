@@ -1,11 +1,10 @@
-package racingcar.ui;
+package racingcar.adapter.in;
 
 import java.util.List;
-import racingcar.application.OutputReader;
 import racingcar.domain.vo.PlayResult;
 
-public class ConsoleOutputReader implements OutputReader {
-    @Override
+public class OutputView {
+
     public void printRacingStarted() {
         System.out.println("\n실행 결과");
     }

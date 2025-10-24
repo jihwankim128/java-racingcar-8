@@ -1,20 +1,20 @@
 package racingcar;
 
-import racingcar.application.InputReader;
-import racingcar.application.OutputReader;
-import racingcar.application.RacingCarController;
+import racingcar.adapter.in.ConsoleRacingController;
+import racingcar.adapter.in.InputView;
+import racingcar.adapter.in.OutputView;
+import racingcar.application.RacingCarUseCase;
 import racingcar.domain.MoveCondition;
 import racingcar.domain.RandomMoveCondition;
-import racingcar.ui.ConsoleInputReader;
-import racingcar.ui.ConsoleOutputReader;
 
 public class Application {
     public static void main(String[] args) {
-        InputReader inputReader = new ConsoleInputReader();
-        OutputReader outputReader = new ConsoleOutputReader();
+        InputView inputView = new InputView();
+        OutputView outputView = new OutputView();
         MoveCondition moveCondition = new RandomMoveCondition();
+        RacingCarUseCase useCase = new RacingCarUseCase(moveCondition);
 
-        RacingCarController racingCarController = new RacingCarController(inputReader, outputReader, moveCondition);
-        racingCarController.run();
+        ConsoleRacingController controller = new ConsoleRacingController(inputView, outputView, useCase);
+        controller.run();
     }
 }
