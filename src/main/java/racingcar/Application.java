@@ -1,9 +1,9 @@
 package racingcar;
 
+import racingcar.adapter.external.RandomForwardCondition;
 import racingcar.adapter.in.ConsoleRacingController;
 import racingcar.adapter.in.InputView;
 import racingcar.adapter.in.OutputView;
-import racingcar.adapter.out.RandomForwardCondition;
 import racingcar.application.RacingCarUseCase;
 
 public class Application {
