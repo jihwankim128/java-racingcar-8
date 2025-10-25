@@ -17,7 +17,7 @@ public class Attempts {
     private void validateCount(int count) {
         if (count < MIN_COUNT) {
             final String errorMessageFormat = "시도 횟수는 %d보다 작을 수 없습니다.".formatted(MIN_COUNT);
-            throw new IllegalArgumentException(errorMessageFormat.formatted(MIN_COUNT));
+            throw new IllegalArgumentException(errorMessageFormat);
         }
     }
 
