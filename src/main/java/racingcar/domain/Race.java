@@ -22,10 +22,8 @@ public class Race {
         }
     }
 
-    public void play(MoveCondition moveCondition) {
-        cars.stream()
-                .filter(car -> moveCondition.canMove())
-                .forEach(Car::moveForward);
+    public void play(ForwardCondition forwardCondition) {
+        cars.forEach(car -> car.tryMoveForward(forwardCondition));
     }
 
     public List<RaceResult> getRaceResult() {
@@ -37,14 +35,14 @@ public class Race {
     public List<String> getWinners() {
         int maxForwardCount = getMaxForwardCount();
         return cars.stream()
-                .filter(car -> car.getPosition() == maxForwardCount)
+                .filter(car -> car.getForwardCount() == maxForwardCount)
                 .map(Car::getName)
                 .toList();
     }
 
     private int getMaxForwardCount() {
         return cars.stream()
-                .mapToInt(Car::getPosition)
+                .mapToInt(Car::getForwardCount)
                 .max()
                 .orElse(0);
     }

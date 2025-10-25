@@ -22,7 +22,7 @@ class RaceTest {
 
     @ParameterizedTest
     @MethodSource("racingcar.domain.helper.RaceTestHelper#moveConditions")
-    void 이동_전략에_따라_차량의_위치가_예상대로_결정된다(MoveCondition condition, List<Integer> expected) {
+    void 이동_전략에_따라_차량의_위치가_예상대로_결정된다(ForwardCondition condition, List<Integer> expected) {
         // given
         Race race = createRace();
 
@@ -31,13 +31,13 @@ class RaceTest {
 
         // then
         assertThat(race.getRaceResult())
-                .extracting(RaceResult::position)
+                .extracting(RaceResult::forwardCount)
                 .containsExactlyElementsOf(expected);
     }
 
     @ParameterizedTest
     @MethodSource("racingcar.domain.helper.RaceTestHelper#winnerConditions")
-    void 경주_우승자를_가져올_수_있다(MoveCondition condition, List<String> expected) {
+    void 경주_우승자를_가져올_수_있다(ForwardCondition condition, List<String> expected) {
         // given
         Race race = createRace();
         race.play(condition);

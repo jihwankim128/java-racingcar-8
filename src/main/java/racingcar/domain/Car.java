@@ -5,12 +5,12 @@ public class Car {
     private static final int MAX_CAR_NAME_LENGTH = 5;
 
     private final String name;
-    private int position;
+    private int forwardCount;
 
     public Car(String name) {
         validateName(name);
         this.name = name;
-        this.position = 0;
+        this.forwardCount = 0;
     }
 
     private void validateName(String name) {
@@ -22,15 +22,17 @@ public class Car {
         }
     }
 
-    public void moveForward() {
-        position++;
-    }
-
     public String getName() {
         return name;
     }
 
-    public int getPosition() {
-        return position;
+    public int getForwardCount() {
+        return forwardCount;
+    }
+
+    public void tryMoveForward(ForwardCondition condition) {
+        if (condition.canMoveForward()) {
+            forwardCount++;
+        }
     }
 }

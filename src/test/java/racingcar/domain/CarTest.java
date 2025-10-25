@@ -38,19 +38,32 @@ class CarTest {
         Car car = new Car(carName);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(0);
+        assertThat(car.getForwardCount()).isEqualTo(0);
     }
 
     @Test
-    void 선수가_주어질_때_전진하면_전진_횟수가_증가한다() {
+    void 선수가_주어질_때_전진시도에_성공하면_전진_횟수가_증가한다() {
         // given
         Car car = new Car("이프");
-        int before = car.getPosition();
+        int before = car.getForwardCount();
 
         // when
-        car.moveForward();
+        car.tryMoveForward(() -> true);
 
         // then
-        assertThat(car.getPosition()).isEqualTo(before + 1);
+        assertThat(car.getForwardCount()).isEqualTo(before + 1);
+    }
+
+    @Test
+    void 선수가_주어질_때_전진시도에_실패하면_정지한다() {
+        // given
+        Car car = new Car("이프");
+        int before = car.getForwardCount();
+
+        // when
+        car.tryMoveForward(() -> false);
+
+        // then
+        assertThat(car.getForwardCount()).isEqualTo(before);
     }
 }

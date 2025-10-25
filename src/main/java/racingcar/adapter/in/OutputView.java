@@ -11,7 +11,7 @@ public class OutputView {
 
     public void printTrialResult(List<RaceResult> raceResults) {
         for (RaceResult raceResult : raceResults) {
-            System.out.println(raceResult.carName() + " : " + "-".repeat(raceResult.position()));
+            System.out.println(raceResult.carName() + " : " + "-".repeat(raceResult.forwardCount()));
         }
         System.out.println();
     }

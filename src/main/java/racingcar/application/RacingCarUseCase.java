@@ -1,17 +1,17 @@
 package racingcar.application;
 
 import java.util.List;
-import racingcar.domain.MoveCondition;
+import racingcar.domain.ForwardCondition;
 import racingcar.domain.Race;
 import racingcar.domain.Trial;
 import racingcar.domain.vo.RaceResult;
 
 public class RacingCarUseCase {
 
-    private final MoveCondition moveCondition;
+    private final ForwardCondition forwardCondition;
 
-    public RacingCarUseCase(MoveCondition moveCondition) {
-        this.moveCondition = moveCondition;
+    public RacingCarUseCase(ForwardCondition forwardCondition) {
+        this.forwardCondition = forwardCondition;
     }
 
     public RacingResult startRacing(RacingCommand command) {
@@ -26,7 +26,7 @@ public class RacingCarUseCase {
 
     private List<List<RaceResult>> simulateRacing(Race race, Trial trial) {
         return trial.tryAction(() -> {
-            race.play(moveCondition);
+            race.play(forwardCondition);
             return race.getRaceResult();
         });
     }
