@@ -22,8 +22,8 @@ class AttemptsTest {
     @Test
     void 시도횟수가_주어지면_시도횟수만큼_동작한다() {
         // given
-        int trialCount = 3;
-        Attempts attempts = new Attempts(trialCount);
+        int attemptCount = 3;
+        Attempts attempts = new Attempts(attemptCount);
         AtomicInteger counter = new AtomicInteger();
 
         // when
