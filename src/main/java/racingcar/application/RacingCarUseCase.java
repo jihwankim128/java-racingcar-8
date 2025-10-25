@@ -2,7 +2,7 @@ package racingcar.application;
 
 import java.util.List;
 import racingcar.domain.ForwardCondition;
-import racingcar.domain.Race;
+import racingcar.domain.RacingGame;
 import racingcar.domain.Trial;
 import racingcar.domain.vo.RaceResult;
 
@@ -15,19 +15,19 @@ public class RacingCarUseCase {
     }
 
     public RacingResult startRacing(RacingCommand command) {
-        Race race = new Race(command.carNames());
+        RacingGame racingGame = new RacingGame(command.carNames());
         Trial trial = new Trial(command.trialCount());
 
-        List<List<RaceResult>> history = simulateRacing(race, trial);
-        List<String> winners = race.getWinners();
+        List<List<RaceResult>> history = simulateRacing(racingGame, trial);
+        List<String> winners = racingGame.getWinners();
 
         return new RacingResult(history, winners);
     }
 
-    private List<List<RaceResult>> simulateRacing(Race race, Trial trial) {
+    private List<List<RaceResult>> simulateRacing(RacingGame racingGame, Trial trial) {
         return trial.tryAction(() -> {
-            race.play(forwardCondition);
-            return race.getRaceResult();
+            racingGame.play(forwardCondition);
+            return racingGame.getRaceResult();
         });
     }
 }

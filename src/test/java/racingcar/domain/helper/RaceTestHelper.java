@@ -5,7 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Stream;
 import org.junit.jupiter.params.provider.Arguments;
 import racingcar.domain.ForwardCondition;
-import racingcar.domain.Race;
+import racingcar.domain.RacingGame;
 
 public class RaceTestHelper {
 
@@ -31,8 +31,8 @@ public class RaceTestHelper {
         return () -> counter.getAndIncrement() % 2 == 0;
     }
 
-    public static Race createRace() {
+    public static RacingGame createRace() {
         List<String> carNames = List.of("이프", "포비", "우테코");
-        return new Race(carNames);
+        return new RacingGame(carNames);
     }
 }

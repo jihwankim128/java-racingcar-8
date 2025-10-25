@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 import racingcar.domain.vo.RaceResult;
 
-public class Race {
+public class RacingGame {
 
     private final List<Car> cars = new ArrayList<>();
 
-    public Race(List<String> carNames) {
+    public RacingGame(List<String> carNames) {
         validateNotEmpty(carNames);
         carNames.forEach(carName -> {
             Car car = new Car(carName);
