@@ -25,7 +25,7 @@ public class ConsoleRacingController {
     }
 
     private RacingCommand createCommand() {
-        List<String> carNames = inputView.readInputCarNames();
+        List<String> carNames = inputView.readCarNames();
         int attemptCount = inputView.readAttemptCount();
         return new RacingCommand(carNames, attemptCount);
     }
