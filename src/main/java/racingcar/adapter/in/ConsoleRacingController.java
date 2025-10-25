@@ -26,15 +26,15 @@ public class ConsoleRacingController {
 
     private RacingCommand createCommand() {
         List<String> carNames = inputView.readInputCarNames();
-        int trialCount = inputView.readTrialCount();
-        return new RacingCommand(carNames, trialCount);
+        int attemptCount = inputView.readAttemptCount();
+        return new RacingCommand(carNames, attemptCount);
     }
 
     private void printRacingResult(RacingResult racingResult) {
         List<List<RaceResult>> history = racingResult.history();
 
-        outputView.printRacingStarted();
-        history.forEach(outputView::printTrialResult);
+        outputView.printResultHeader();
+        history.forEach(outputView::printAttemptResult);
         outputView.printWinners(racingResult.winners());
     }
 }

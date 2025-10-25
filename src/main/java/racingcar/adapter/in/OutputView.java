@@ -5,11 +5,11 @@ import racingcar.domain.vo.RaceResult;
 
 public class OutputView {
 
-    public void printRacingStarted() {
+    public void printResultHeader() {
         System.out.println("\n실행 결과");
     }
 
-    public void printTrialResult(List<RaceResult> raceResults) {
+    public void printAttemptResult(List<RaceResult> raceResults) {
         for (RaceResult raceResult : raceResults) {
             System.out.println(raceResult.carName() + " : " + "-".repeat(raceResult.forwardCount()));
         }

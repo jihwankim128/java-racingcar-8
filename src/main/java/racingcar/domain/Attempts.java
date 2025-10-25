@@ -4,12 +4,12 @@ import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.IntStream;
 
-public class Trial {
+public class Attempts {
 
     private static final int MIN_COUNT = 1;
     private final int count;
 
-    public Trial(int count) {
+    public Attempts(int count) {
         validateCount(count);
         this.count = count;
     }
@@ -21,7 +21,7 @@ public class Trial {
         }
     }
 
-    public <T> List<T> tryAction(Supplier<T> action) {
+    public <T> List<T> repeat(Supplier<T> action) {
         return IntStream.range(0, count)
                 .mapToObj(i -> action.get())
                 .toList();
