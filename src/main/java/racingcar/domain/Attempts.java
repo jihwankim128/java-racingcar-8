@@ -7,6 +7,7 @@ import java.util.stream.IntStream;
 public class Attempts {
 
     private static final int MIN_COUNT = 1;
+
     private final int count;
 
     public Attempts(int count) {
@@ -16,8 +17,7 @@ public class Attempts {
 
     private void validateCount(int count) {
         if (count < MIN_COUNT) {
-            final String errorMessageFormat = "시도 횟수는 %d보다 작을 수 없습니다.".formatted(MIN_COUNT);
-            throw new IllegalArgumentException(errorMessageFormat);
+            throw new IllegalArgumentException("시도 횟수는 %s보다 작을 수 없습니다.".formatted(MIN_COUNT));
         }
     }
 
